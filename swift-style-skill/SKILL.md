@@ -5,6 +5,10 @@ description: >
   refactoring. Covers naming, file structure, formatting, and source-backed
   programming practices. Use for Google Swift compliance, not architecture,
   framework design, or project policy outside the guide.
+license: MIT
+metadata:
+  author: Michael Pchelnikov
+  version: "2.0.0"
 ---
 
 # Swift Style Skill
