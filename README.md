@@ -39,7 +39,7 @@ Upload via the `/v1/skills` endpoint and reference by `skill_id` in your API cal
 
 1. **Clone** this repository.
 2. **Install or symlink** the `swift-style-skill/` folder following your tool's official skills installation docs (see links below).
-3. **Use your AI tool** as usual — the skill triggers automatically on any Swift code generation, review, or style audit task.
+3. **Use your AI tool** as usual — the skill can then be invoked for Swift code generation, review, or style audit tasks.
 
 #### Where to Save Skills
 
@@ -102,14 +102,16 @@ swift-style-skill/
 
 ## Token Budget
 
-The skill uses progressive disclosure to minimise context window usage:
+The skill uses progressive disclosure to minimise context window usage. These
+figures are rough estimates and depend on the host tool's packaging and prompt
+format:
 
 | Load Level | When | ~Tokens |
 |------------|------|---------|
 | Metadata only | Every conversation | ~130 |
 | `SKILL.md` triggered | Swift style task detected | ~500 |
 | `SKILL.md` + one reference | Most real tasks | ~1,000–1,200 |
-| All files loaded | Full audit worst case | ~2,600 |
+| All files loaded | Full audit worst case | ~2,700 |
 
 ## Sources
 
