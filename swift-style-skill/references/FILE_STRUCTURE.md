@@ -33,7 +33,8 @@ Sort each group lexicographically and separate groups with one blank line.
 ## Top-Level Declarations
 
 - Most files contain one top-level type.
-- Related helper types may share the file when that improves locality.
+- Related helper types may share the file when they are closely related and
+  commonly reviewed together.
 - A class and its delegate protocol may share a file.
 - Use a logical member order that you could explain to a reviewer.
 
@@ -64,7 +65,7 @@ At minimum, document:
 Common exceptions allowed by the guide:
 - self-explanatory enum cases
 - overrides or protocol requirement implementations
-- many test declarations
+- test methods with descriptive names
 - extension declarations themselves
 
 Keep docs concise:

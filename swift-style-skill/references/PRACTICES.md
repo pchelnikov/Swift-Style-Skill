@@ -4,9 +4,9 @@ Keep this file limited to practices that the Google Swift Style Guide covers.
 
 ## Compiler Warnings
 
-Code should compile without warnings when feasible. Warnings that are easy to
-remove should be removed. Deprecation warnings can be a reasonable exception
-when migration is not yet practical.
+Do not introduce new warnings. Remove warnings that are already easy to fix.
+Deprecation warnings can be a reasonable exception when migration is not yet
+practical.
 
 ## Initializers
 
@@ -14,6 +14,11 @@ when migration is not yet practical.
 - Do not call special literal protocol initializers directly.
 - Omit `.init` in direct initializer calls unless the receiver is a metatype
   value.
+
+```swift
+let x = MyType(value: 1)
+let y = MyType.init(value: 1)
+```
 
 ## Properties
 

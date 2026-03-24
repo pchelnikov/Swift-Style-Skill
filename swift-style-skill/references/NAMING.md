@@ -22,10 +22,12 @@ Treat acronyms as words within the surrounding case style.
   `URLSession`, `XMLParser`
 
 ```swift
+// ✅
 var url: URL
 var urlString: String
 class URLSessionProxy {}
 
+// ❌
 var URL: String
 class UrlSessionProxy {}
 ```
@@ -35,9 +37,11 @@ class UrlSessionProxy {}
 Name APIs so the use site reads clearly.
 
 ```swift
+// ✅
 list.insert(element, at: index)
 users.remove(at: index)
 
+// ❌
 list.insertElement(element, atIndex: index)
 users.removeElement(atIndex: index)
 ```

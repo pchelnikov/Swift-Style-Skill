@@ -27,6 +27,11 @@ https://google.github.io/swift/
 3. Open only one reference file unless the task genuinely spans categories.
 4. Quote or cite only the rule relevant to the code under discussion.
 
+Mode outputs:
+- `generate` and `refactor`: apply the rules directly with minimal explanation.
+- `review`: report only concrete violations or risks.
+- `answer`: explain briefly and cite only the relevant rule.
+
 ## Agent Behavior
 
 - Do not restate the full style guide in responses.
@@ -35,8 +40,8 @@ https://google.github.io/swift/
   compliance.
 - If the user explicitly asks for Google Swift compliance, follow this skill
   over repo-local convention.
-- Otherwise, if repo-local style clearly differs and the task is normal
-  maintenance, avoid churn and preserve local convention.
+- Otherwise, if the file already uses a different style consistently and the
+  task is normal maintenance, avoid churn and preserve local convention.
 
 ## Core Rules
 
