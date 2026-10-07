@@ -3,7 +3,7 @@
 ## Core Rules
 
 - 100 characters per line unless a guide exception applies.
-- 2-space indentation, never tabs.
+- 4-space indentation, never tabs.
 - K&R braces for non-empty blocks.
 - No semicolons outside comments or string literals.
 - At most one statement per line, with the guide's trivial-block exceptions.
@@ -30,7 +30,8 @@ after `in`.
 Follow the Google wrapping style:
 - keep short declarations and expressions on one line
 - wrapped comma-delimited lists are either fully horizontal or fully vertical
-- wrapped function parameters and call arguments use +2 indentation
+- wrapped function parameters and call arguments use one additional indentation
+  level (4 spaces)
 - wrapped `where` clauses and continuation lines follow the guide's examples,
   not visual alignment with opening delimiters
 
@@ -45,7 +46,10 @@ Follow the Google wrapping style:
 ## Vertical Whitespace
 
 - At most one blank line between declarations.
-- No blank line at the start or end of a block.
+- Insert one blank line after the opening brace of non-empty class, struct,
+  and extension declarations, including nested classes and structs. Other
+  blocks, including enum declarations, have no leading blank line. No block
+  has a trailing blank line.
 - Use a single blank line between logical declaration groups.
 
 ## Parentheses

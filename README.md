@@ -1,10 +1,26 @@
 # Swift Style Guide Skill
 
 Ensure your AI coding tool generates and reviews Swift code that follows the
-Google Swift Style Guide for naming, formatting, file structure, documentation,
-and guide-backed programming practices.
+Google Swift Style Guide with the formatting overrides below for naming,
+formatting, file structure, documentation, and guide-backed programming practices.
 
-Built on the [Agent Skills open format](https://agentskills.io/home). Every rule traces to the [Google Swift Style Guide](https://google.github.io/swift/), which is itself grounded in Apple's Swift standard library style.
+Built on the [Agent Skills open format](https://agentskills.io/home). The skill
+uses the [Google Swift Style Guide](https://google.github.io/swift/) as its
+foundation, with explicit formatting overrides.
+
+## Formatting and Precedence
+
+- Use 4-space indentation, including one additional level for wrapped function
+  parameters and call arguments.
+- Insert one blank line after the opening brace of non-empty class, struct,
+  and extension declarations, including nested classes and structs. Other
+  blocks, including enum declarations, have no leading blank line. No block
+  has a trailing blank line.
+- Explicit user instructions override this skill. Otherwise, preserve
+  established project formatting unless a formatting migration is requested.
+
+See [the formatting reference](swift-style-skill/references/FORMATTING.md) for
+the complete formatting rules.
 
 ## Who This Is For
 
@@ -79,7 +95,9 @@ This skill gives your AI coding tool a concrete, rule-based Swift style standard
 
 ## What Makes This Skill Different
 
-**Style Guide Grounded:** Every rule traces to the Google Swift Style Guide (https://google.github.io/swift/), itself based on Apple's Swift standard library style. No personal opinions, no folklore.
+**Style Guide Grounded:** Naming, file structure, documentation, and programming
+practices follow the Google Swift Style Guide. Formatting follows the guide
+with the explicit overrides described above.
 
 **Non-Opinionated Beyond Style:** No architecture enforcement (MVVM, TCA, VIPER). No framework-specific rules. Style only; how you structure your app is your decision.
 
@@ -115,7 +133,7 @@ format:
 
 ## Sources
 
-- [Google Swift Style Guide](https://google.github.io/swift/) — primary source for all rules
+- [Google Swift Style Guide](https://google.github.io/swift/) — primary source, subject to the documented formatting overrides
 - [Apple's API Design Guidelines](https://swift.org/documentation/api-design-guidelines/) — naming foundation
 - [Swift Standard Library](https://github.com/swiftlang/swift/tree/main/stdlib) — style reference the guide is grounded in
 
@@ -123,7 +141,7 @@ format:
 
 Contributions are welcome! When submitting changes:
 
-- Every rule must trace to the Google Swift Style Guide or Apple's API Design Guidelines
+- Rules must trace to the Google Swift Style Guide or Apple's API Design Guidelines, unless documented as explicit formatting overrides
 - Code examples should be minimal and self-contained
 - Keep `SKILL.md` compact; move detail into the most relevant reference file
 - Do not add architecture opinions or framework-specific rules

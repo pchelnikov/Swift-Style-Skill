@@ -8,13 +8,13 @@ description: >
 license: MIT
 metadata:
   author: Michael Pchelnikov
-  version: "2.0.0"
+  version: "2.1.0"
 ---
 
 # Swift Style Skill
 
 Use this skill for Swift naming, formatting, file structure, and style review
-that should follow the Google Swift Style Guide strictly:
+that should follow the Google Swift Style Guide with the formatting overrides below:
 https://google.github.io/swift/
 
 ## Scope
@@ -42,10 +42,8 @@ Mode outputs:
 - When reviewing, report only concrete violations or risks visible in the code.
 - When generating or refactoring, prefer the smallest change that reaches style
   compliance.
-- If the user explicitly asks for Google Swift compliance, follow this skill
-  over repo-local convention.
-- Otherwise, if the file already uses a different style consistently and the
-  task is normal maintenance, avoid churn and preserve local convention.
+- Explicit user instructions override this skill. Otherwise, preserve
+  established project formatting unless a formatting migration is requested.
 
 ## Core Rules
 
@@ -53,7 +51,10 @@ Mode outputs:
 - Functions, methods, properties, parameters, locals, globals, and enum cases:
   `lowerCamelCase`.
 - Follow Apple's API Design Guidelines for names and call-site clarity.
-- 100-column limit, 2-space indentation, no tabs, no semicolons, K&R braces.
+- 100-column limit, 4-space indentation, no tabs, no semicolons, K&R braces.
+- Insert one blank line after the opening brace of non-empty class, struct,
+  and extension declarations, including nested classes and structs. Other
+  type declarations, including enums, have no leading blank line.
 - Prefer whole-module imports; keep imports minimal, grouped, and sorted.
 - One logical primary type per file; use `// MARK: -` for meaningful sections.
 - Prefer shorthand types: `[T]`, `[K: V]`, `T?` when the compiler allows them.
