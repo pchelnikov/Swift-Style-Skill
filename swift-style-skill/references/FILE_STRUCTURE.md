@@ -9,6 +9,9 @@
 
 ## File Comments
 
+Do not add new `Created by` file headers. Preserve existing headers and required
+copyright or license notices.
+
 File comments are optional and usually unnecessary for files that contain a
 single abstraction. Prefer documenting the type itself. File comments are most
 useful when a file groups multiple related abstractions.
@@ -36,6 +39,9 @@ Sort each group lexicographically and separate groups with one blank line.
 - Related helper types may share the file when they are closely related and
   commonly reviewed together.
 - A class and its delegate protocol may share a file.
+- Place new protocol declarations near the top of the file. Supporting types
+  may precede them when that improves readability. Preserve existing declaration
+  order unless reorganizing the file is part of the requested change.
 - Use a logical member order that you could explain to a reviewer.
 
 ## `// MARK:`
@@ -57,13 +63,16 @@ be explainable and consistent.
 
 Use `///` for documentation comments.
 
-At minimum, document:
-- every `public` declaration
-- every `open` declaration
-- every `public` or `open` member of such a declaration
+Require documentation for new `public` and `open` APIs intended for consumers
+of reusable libraries and packages, regardless of build system, including new
+public and open members. A declaration does not require documentation solely
+because it is marked `public` or `open` inside an application. Do not flag
+existing undocumented declarations in change reviews. In an explicitly requested
+documentation audit, assess existing APIs within the requested scope using the
+same library/package boundary and exceptions, without editing files.
 
-Common exceptions allowed by the guide:
-- self-explanatory enum cases
+Common exceptions:
+- self-explanatory declarations, including enum cases
 - overrides or protocol requirement implementations
 - test methods with descriptive names
 - extension declarations themselves

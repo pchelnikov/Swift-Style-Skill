@@ -1,7 +1,7 @@
 # Naming Reference
 
-This file covers naming rules that come from the Google Swift Style Guide and
-Apple's API Design Guidelines.
+This file defines the skill’s naming conventions, informed by Apple’s API
+Design Guidelines.
 
 ## Casing
 
@@ -22,12 +22,12 @@ Treat acronyms as words within the surrounding case style.
   `URLSession`, `XMLParser`
 
 ```swift
-// ✅
+// Preferred
 var url: URL
 var urlString: String
 class URLSessionProxy {}
 
-// ❌
+// Avoid
 var URL: String
 class UrlSessionProxy {}
 ```
@@ -37,11 +37,11 @@ class UrlSessionProxy {}
 Name APIs so the use site reads clearly.
 
 ```swift
-// ✅
+// Preferred
 list.insert(element, at: index)
 users.remove(at: index)
 
-// ❌
+// Avoid
 list.insertElement(element, atIndex: index)
 users.removeElement(atIndex: index)
 ```
@@ -63,11 +63,12 @@ name as the property.
 
 ```swift
 struct Person {
-  let name: String
 
-  init(name: String) {
-    self.name = name
-  }
+    let name: String
+
+    init(name: String) {
+        self.name = name
+    }
 }
 ```
 
@@ -77,12 +78,16 @@ Static or class properties that return the declaring type are not suffixed with
 the type name.
 
 ```swift
+// Preferred
 extension Color {
-  static let red = Color(red: 1, green: 0, blue: 0)
+
+    static let red = Color(red: 1, green: 0, blue: 0)
 }
 
+// Avoid
 extension Color {
-  static let redColor = Color(red: 1, green: 0, blue: 0)
+
+    static let redColor = Color(red: 1, green: 0, blue: 0)
 }
 ```
 
