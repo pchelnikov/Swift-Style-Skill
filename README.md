@@ -7,6 +7,148 @@ configurations take precedence over its defaults.
 
 Built on the [Agent Skills open format](https://agentskills.io/home).
 
+## Core Principles
+
+### Respect the project
+
+The skill provides defaults, not a competing project policy. Follow applicable
+project instructions and formatter/linter configurations. For example, a project
+with a 100-column limit keeps that limit even though this skill defaults to 120.
+Ask about conflicting project rules only when no explicit precedence resolves
+the conflict.
+
+### Make intent clear
+
+Use names that read naturally at the call site. Prefer type inference when the
+initializer makes the type clear, and annotations when they clarify intent.
+
+```swift
+// Preferred
+let activeUsers = users.filter { $0.status == .active }
+users.remove(at: index)
+
+// Avoid
+let filteredData = users.filter { $0.status == .active }
+users.removeElement(atIndex: index)
+```
+
+For new namespaces containing only static constants or helper functions, prefer
+a caseless enum when instances are not needed:
+
+```swift
+enum DateFormats {
+    static let shortDate = "yyyy-MM-dd"
+    static let yearMonth = "yyyy-MM"
+}
+```
+
+### Keep formatting predictable
+
+Use four-space indentation and consistent type-body spacing. Structs and classes
+containing only stored properties without observers have no leading blank line.
+Add one when they contain computed properties, observers, initializers, methods,
+or other declarations. Non-empty actors and extensions always have one; enums
+and protocols do not. Keep short expressions on one line, and wrap longer ones
+according to the [formatting reference](swift-style-skill/references/FORMATTING.md).
+
+```swift
+struct User {
+    let name: String
+    let status: Status
+}
+
+enum Status {
+    case active
+    case inactive
+}
+```
+
+Adding an initializer or method introduces the leading blank line:
+
+```swift
+struct User {
+
+    let name: String
+    let status: Status
+
+    init(name: String, status: Status = .active) {
+        self.name = name
+        self.status = status
+    }
+
+    func greeting() -> String {
+        "Hello, \(name)"
+    }
+}
+```
+
+Computed properties also retain it:
+
+```swift
+struct User {
+
+    let name: String
+
+    var displayName: String {
+        name.uppercased()
+    }
+}
+```
+
+When an argument list needs wrapping, break before the first argument, use one
+argument per line, and align the closing parenthesis with the statement. This
+abbreviated example illustrates the layout; calls that fit stay on one line.
+
+```swift
+let user = makeUser(
+    name: name,
+    status: status,
+    notificationsEnabled: true
+)
+```
+
+### Prefer clear control flow
+
+Prefer optional binding and early exits over force unwraps and unnecessary
+nesting. Keep short conditions together when they fit the effective line limit.
+
+```swift
+func sendReminder(to user: User?) {
+    guard let user, user.status == .active else {
+        return
+    }
+
+    sendMessage(to: user)
+}
+```
+
+### Document APIs for their consumers
+
+Document new public and open APIs in reusable libraries and packages when the
+documentation explains behavior that consumers need to know. The requirement
+and its exceptions are defined in the
+[file structure reference](swift-style-skill/references/FILE_STRUCTURE.md).
+
+```swift
+/// Removes duplicates while preserving the order of first occurrence.
+public func uniqueElements<Element: Hashable>(in elements: [Element]) -> [Element] {
+    var seen = Set<Element>()
+    return elements.filter { seen.insert($0).inserted }
+}
+```
+
+### Keep reviews focused and changes purposeful
+
+Change reviews flag introduced violations, not existing style differences.
+Explicit style audits can examine existing code but remain read-only. Preserve
+accepted alternatives such as existing type annotations and extension access
+modifiers instead of creating unrelated cleanup.
+
+Function bodies over 50 lines (excluding blank lines and comments) and files over
+500 lines prompt a readability assessment, subject to project linter settings.
+Length alone is not a finding: extract a helper or split a file when it creates
+a meaningful unit, not merely to satisfy a number.
+
 ## Migrating to 3.0.0
 
 Version 3.0.0 establishes independent Swift style conventions. The default line
@@ -30,9 +172,13 @@ these defaults.
 - Use 4-space indentation, including one additional level for wrapped function
   parameters and call arguments.
 - Insert one blank line after the opening brace of non-empty `struct`, `class`,
-  `actor`, and `extension` declarations, including nested declarations. Do not insert
-  a leading blank line in `enum`, `protocol`, or other blocks. No block has
-  a trailing blank line.
+  `actor`, and `extension` declarations, including nested declarations. Exception:
+  omit the leading blank line in structs and classes containing only stored
+  properties, without property observers. Computed properties, observers,
+  initializers, methods, or any other declarations retain the leading blank line.
+  Actors and extensions retain it even when they contain only properties.
+  Do not insert a leading blank line in `enum`, `protocol`, or other blocks.
+  No block has a trailing blank line.
 - Preserve established project formatting unless a formatting migration is
   requested.
 

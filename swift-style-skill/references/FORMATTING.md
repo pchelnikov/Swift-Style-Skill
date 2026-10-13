@@ -109,9 +109,13 @@ let supportedRegions = [
 
 - At most one blank line between declarations.
 - Insert one blank line after the opening brace of non-empty `struct`, `class`,
-  `actor`, and `extension` declarations, including nested declarations. Do not insert
-  a leading blank line in `enum`, `protocol`, or other blocks. No block has
-  a trailing blank line.
+  `actor`, and `extension` declarations, including nested declarations. Exception:
+  omit the leading blank line in structs and classes containing only stored
+  properties, without property observers. Computed properties, observers,
+  initializers, methods, or any other declarations retain the leading blank line.
+  Actors and extensions retain it even when they contain only properties.
+  Do not insert a leading blank line in `enum`, `protocol`, or other blocks.
+  No block has a trailing blank line.
 - Use a single blank line between logical declaration groups.
 
 ## Parentheses

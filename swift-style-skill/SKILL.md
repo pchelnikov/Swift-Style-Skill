@@ -8,7 +8,7 @@ description: >
 license: MIT
 metadata:
   author: Michael Pchelnikov
-  version: "3.0.0"
+  version: "3.0.1"
 ---
 
 # Swift Style Guide Skill
@@ -67,9 +67,13 @@ Mode outputs:
 - Follow Apple's API Design Guidelines for names and call-site clarity.
 - 120-column default limit, 4-space indentation, no tabs, no semicolons, K&R braces.
 - Insert one blank line after the opening brace of non-empty `struct`, `class`,
-  `actor`, and `extension` declarations, including nested declarations. Do not insert
-  a leading blank line in `enum`, `protocol`, or other blocks. No block has
-  a trailing blank line.
+  `actor`, and `extension` declarations, including nested declarations. Exception:
+  omit the leading blank line in structs and classes containing only stored
+  properties, without property observers. Computed properties, observers,
+  initializers, methods, or any other declarations retain the leading blank line.
+  Actors and extensions retain it even when they contain only properties.
+  Do not insert a leading blank line in `enum`, `protocol`, or other blocks.
+  No block has a trailing blank line.
 - Prefer whole-module imports; keep imports minimal, grouped, and sorted.
 - One logical primary type per file; use `// MARK: -` for meaningful sections.
 - Prefer shorthand types: `[T]`, `[K: V]`, `T?` when the compiler allows them.
