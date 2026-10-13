@@ -2,13 +2,6 @@
 
 This file covers selected coding practices within the skill’s style scope.
 
-## Compiler Warnings
-
-Do not introduce new warnings. Address existing warnings only when relevant to
-the requested change; do not expand the task into unrelated cleanup.
-Deprecation warnings can be a reasonable exception when migration is not yet
-practical.
-
 ## Initializers
 
 - Use a synthesized memberwise initializer for `struct` when it is suitable.
@@ -23,10 +16,6 @@ let x = MyType(value: 1)
 // Avoid
 let y = MyType.init(value: 1)
 ```
-
-## Properties
-
-Read-only computed properties omit `get`.
 
 ## Type Annotations
 
@@ -50,11 +39,6 @@ let user: User?
 - Prefer `if let`, `guard let`, optional chaining, and `??`.
 - If you only need to test for non-`nil`, compare to `nil` instead of binding
   and discarding the value.
-
-## Errors
-
-Use an `enum` conforming to `Error` when there are multiple possible error
-states.
 
 ## Force Unwraps and Force Casts
 

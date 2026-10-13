@@ -131,11 +131,16 @@ expressions.
   level (4 spaces). Keep the directives, including `#endif`, aligned with
   the surrounding scope.
 - Non-doc comments use `//`, not block comments.
-- Read-only computed properties omit `get` when possible.
+- Omit explicit `get` for read-only computed properties when the shorthand
+  preserves their behavior and required accessor declarations. Retain it when
+  needed, such as for `async`, `throws`, accessor attributes, or mutation modifiers.
 - `switch` cases align with the `switch`.
 - Enum cases are one per line when they have associated values or comments.
 - Single trailing closure: use trailing closure syntax.
-- Multiple closure arguments: keep all closures inside the argument list.
+- For calls with multiple closure arguments, allow either parenthesized
+  arguments or multiple trailing closures. Prefer the form that makes each
+  closure's role clear, following project conventions. Preserve existing calls
+  unless changing them is part of the requested work.
 - Multiline array and dictionary literals require trailing commas. Omit trailing
   commas in argument and parameter lists by default.
 - Numeric separators are recommended for long literals when they improve

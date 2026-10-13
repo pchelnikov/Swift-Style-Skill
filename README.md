@@ -229,7 +229,8 @@ Follow your tool's official documentation:
 - **Cursor:** [Enabling Skills](https://cursor.com/docs/context/skills#enabling-skills)
 
 **How to verify:** Your agent should use `swift-style-skill/SKILL.md` as a
-dispatcher, then open only the relevant reference file for the current task.
+dispatcher, check project instructions and configurations, and open the
+references needed for the current task.
 
 ## What This Skill Offers
 
@@ -274,7 +275,9 @@ skill’s defaults.
 rules, including SwiftUI view layout and property organization, and application
 architecture are outside its scope.
 
-**Dispatcher-Based:** `SKILL.md` is a compact router. It tells the agent which mode it is in, which core rules to apply immediately, and which single reference file to open next.
+**Dispatcher-Based:** `SKILL.md` identifies the task mode and scope, directs the
+agent to check project instructions and configurations first, and routes it to
+the references needed for the task.
 
 **Token Efficient:** The top-level skill is intentionally small and pushes detail
 into focused reference files so the agent does not load everything by default.
@@ -284,6 +287,8 @@ into focused reference files so the agent does not load everything by default.
 ```
 swift-style-skill/
 ├── SKILL.md                  # Dispatcher, scope, workflow, core rules, routing
+├── agents/
+│   └── openai.yaml           # Codex display name and short description
 └── references/
     ├── FILE_STRUCTURE.md     # File naming, import ordering, MARK comments, doc comments
     ├── FORMATTING.md         # Column limit, braces, semicolons, line-wrapping, whitespace

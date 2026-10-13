@@ -14,12 +14,11 @@ Design Guidelines.
 
 ## Acronyms and Initialisms
 
-Treat acronyms as words within the surrounding case style.
-
-- Entire acronym identifiers remain uppercase: `URL`, `HTTP`, `XML`
-- In `lowerCamelCase`, acronyms are lowercase: `urlString`, `httpRequest`
-- In `UpperCamelCase`, acronyms keep their usual capitalization:
-  `URLSession`, `XMLParser`
+Apply acronym capitalization according to the identifier's naming convention.
+In UpperCamelCase names, preserve conventional uppercase acronyms, such as `URL`
+and `HTTPClient`. In lowerCamelCase names, lowercase an acronym at the beginning,
+but preserve its conventional capitalization elsewhere, as in `destinationURL`.
+Keep existing names unchanged during unrelated work.
 
 ```swift
 // Preferred

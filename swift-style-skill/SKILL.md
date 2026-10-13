@@ -8,7 +8,7 @@ description: >
 license: MIT
 metadata:
   author: Michael Pchelnikov
-  version: "3.0.1"
+  version: "3.0.2"
 ---
 
 # Swift Style Guide Skill
@@ -27,10 +27,13 @@ configurations take precedence over this skill’s defaults.
 
 ## Workflow
 
-1. Identify the task mode: `generate`, `review`, `audit`, `refactor`, or `answer`.
-2. Apply the core rules below immediately.
-3. Open only one reference file unless the task genuinely spans categories.
-4. Quote or cite only the rule relevant to the code under discussion.
+1. Identify the task mode (`generate`, `review`, `audit`, `refactor`, or `answer`)
+   and requested scope.
+2. Inspect applicable project instructions and formatter/linter configurations.
+3. Apply project rules first, then skill defaults where applicable. Ask the user
+   about conflicts only when no explicit precedence resolves them.
+4. Read the references needed for the task.
+5. Quote or cite only the rule relevant to the code under discussion.
 
 Mode outputs:
 - `generate` and `refactor`: apply the rules directly with minimal explanation.
@@ -50,6 +53,9 @@ Mode outputs:
   from review findings remain excluded during audits.
 - When generating or refactoring, prefer the smallest change that reaches style
   compliance.
+- Style changes must preserve behavior and API compatibility. Do not change
+  type design, access levels, initialization behavior, or error handling solely
+  to satisfy a style preference.
 - Follow explicit user instructions and applicable project instructions,
   including `AGENTS.md` and `CLAUDE.md`. Project instructions and formatter/linter
   configurations take precedence over this skill's defaults. If applicable

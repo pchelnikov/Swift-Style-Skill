@@ -1,0 +1,3 @@
+interface:
+  display_name: "Swift Style Guide Skill"
+  short_description: "Consistent Swift naming, formatting, and style reviews"
